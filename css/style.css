@@ -86,6 +86,14 @@ nav a:hover {
   color: #303030;
 }
 
+@media (max-width:768px){
+
+.navbar{
+  padding-bottom:40px;
+}
+
+}
+
 /* Logo ympyrä */
 .logo-circle {
   position: absolute;          /* keskitetään navbarin päälle */
