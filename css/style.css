@@ -540,3 +540,10 @@ section {
 }
 
 }
+
+.booking-embed iframe{
+  width:90%;
+  height:90vh;
+  border:none;
+  border-radius:12px;
+}
