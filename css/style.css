@@ -517,3 +517,17 @@ section {
 .staff-card-single .hero-btn:hover {
   background: #a76c6b;
 }
+
+@media (max-width: 768px){
+
+.logo-circle{
+  width:80px;
+  height:80px;
+}
+
+.logo-circle img{
+  width:45px;
+  height:45px;
+}
+
+}
