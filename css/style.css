@@ -113,8 +113,8 @@ nav a:hover {
 
 /* Logo kuva */
 .logo-circle img {
-  width: 300px;                 /* kuvan koko */
-  height: 300px;
+  width: 95%;                 /* kuvan koko */
+  height: 95%;
   object-fit: contain;
 }
 
