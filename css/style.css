@@ -1,0 +1,519 @@
+/* 
+body määrittää koko sivun perusasetukset:
+- poistaa selaimen oletusmarginaalin
+- asettaa sivun fontin
+- määrittää tekstin päävärin
+- antaa sivulle vaalean taustavärin
+*/
+body{
+margin:0;
+font-family:Poppins;
+color:#303030;
+background:#6C8979;
+}
+
+/* Logo container */
+.logo {
+  display: flex;           /* logo-teksti ja kuva samalle riville */
+  align-items: center;     /* keskitetään pystysuunnassa */
+  gap: 10px;               /* väli tekstin ja kuvan välille */
+  font-weight: 600;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Logo-kuva */
+.logo img {
+  height: 60px;            /* säädä haluamasi korkeus */
+  width: auto;             /* säilyttää kuvasuhteen */
+  display: block;
+}
+
+/* 
+.navbar on sivun yläreunan navigointipalkki.
+Flexboxilla asetetaan logo ja navigaatio eri puolille.
+Sticky-asetus pitää navin näkyvissä scrollatessa.
+*/
+/* Navbar asettelu */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* vasen/oikea linkit */
+  align-items: center;
+  padding: 20px 10%;
+  background: #F6EADF;           /* navbarin taustaväri */
+  position: sticky;
+  top: 0;             /* tarvitaan logo-circle absoluuttisesti */
+  z-index: 1000;
+}
+
+
+/* Vasemmat ja oikeat navit */
+.nav-left, .nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+/* Navbar linkit */
+nav a {
+  position: relative;       /* pseudo-elementti suhteutetaan linkkiin */
+  text-decoration: none;    /* poistaa oletusunderline */
+  color: #303030;
+  font-weight: 500;
+  line-height: 1;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+/* Liukuva underline */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;                /* aluksi näkymätön */
+  height: 2px;             /* alleviivan paksuus */
+  background-color: #303030; /* väri */
+  transition: width 0.3s ease;
+}
+
+/* Hover: underline kasvaa */
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Optional: tekstin väri hoverissa */
+nav a:hover {
+  color: #303030;
+}
+
+/* Logo ympyrä */
+.logo-circle {
+  position: absolute;          /* keskitetään navbarin päälle */
+  top: 100%;                   /* navbarin ala reunasta */
+  left: 50%;
+  transform: translate(-50%, -50%); /* keskitetään vaakaan ja pystysuunnassa */
+  background: #F6EADF;         /* sama väri kuin navbar */
+  width: 160px;                /* ympyrän koko */
+  height: 160px;
+  border-radius: 50%;          /* tekee ympyrän */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+/* Logo kuva */
+.logo-circle img {
+  width: 300px;                 /* kuvan koko */
+  height: 300px;
+  object-fit: contain;
+}
+
+/*
+.cta on Call To Action -nappi (esim. "Varaa aika").
+Se erottuu navigaatiosta vihreällä taustalla ja pyöristetyillä kulmilla.
+*/
+.cta{
+background:#398a5d;
+border:none;
+padding:10px 20px;
+border-radius:25px;
+color:#ffffff;
+cursor:pointer;
+}
+
+
+/*
+.hero on sivun suuri aloitusosio.
+Se käyttää koko ruudun korkeutta ja näyttää taustakuvan,
+jonka päällä on tumma gradientti tekstin luettavuuden parantamiseksi.
+Flexbox keskittää tekstin.
+*/
+.hero{
+height:90vh;
+background-image:linear-gradient(
+rgba(0,0,0,0.4),
+rgba(0,0,0,0.4)
+),
+url("../images/hero.webp");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero-noImage{
+height:90vh;
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+
+/*
+.hero h1 määrittää hero-osion pääotsikon ulkoasun.
+Fonttikoko on suuri jotta se toimii landing page -otsikkona.
+*/
+.hero h1{
+font-size:56px;
+margin-bottom:10px;
+}
+
+
+/*
+.hero-btn on hero-osion päätoimintonappi.
+Se on iso ja pyöristetty, jotta se erottuu visuaalisesti.
+*/
+.hero-btn{
+padding:15px 35px;
+font-size:18px;
+border:none;
+background:#398a5d;
+border-radius:40px;
+color:white;
+cursor:pointer;
+text-decoration: none;
+display: inline-block;
+}
+
+
+/*
+section koskee kaikkia sivun section-elementtejä.
+Se lisää tilaa ylä- ja alapuolelle sekä keskittää tekstin.
+*/
+section{
+padding:90px 10%;
+text-align:center;
+}
+
+
+/*
+h2 määrittää osioiden otsikoiden ulkoasun.
+Suuri fontti ja väli otsikon alla.
+*/
+h2{
+font-size:36px;
+margin-bottom:50px;
+}
+
+
+/*
+.service-grid toimii palvelukorttien containerina.
+Flexbox asettaa kortit vierekkäin ja sallii rivinvaihdon pienillä näytöillä.
+*/
+.service-grid{
+display:flex;
+gap:30px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+
+/*
+.service-card on yksittäinen palvelukortti.
+Siinä on valkoinen tausta, pyöristetyt kulmat ja varjo,
+joka tekee siitä modernin "kortti UI" elementin.
+*/
+.service-card{
+background:white;
+padding:35px;
+width:260px;
+border-radius:12px;
+box-shadow:0 8px 30px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+
+/*
+.service-card:hover määrittää hover-efektin.
+Kun hiiri menee kortin päälle, se nousee hieman ylöspäin.
+*/
+.service-card:hover{
+transform:translateY(-8px);
+}
+
+
+/*
+.price-grid toimii hinnastokorttien containerina.
+Flexbox järjestää hinnat vierekkäin.
+*/
+.price-grid{
+display:flex;
+gap:30px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+
+/*
+.price-card on yksittäinen hinnastokortti.
+Ulkoasu muistuttaa palvelukortteja mutta hieman eri mittasuhteilla.
+*/
+.price-card{
+background:white;
+padding:40px;
+width:200px;
+border-radius:12px;
+box-shadow:0 8px 30px rgba(0,0,0,0.05);
+}
+
+
+/*
+.highlight korostaa suosituimman hinnan.
+Lisää vihreän reunuksen ja hieman suuremman koon.
+*/
+.highlight{
+border:3px solid #4CAF50;
+transform:scale(1.05);
+}
+
+
+/*
+.price määrittää hinnan ulkoasun.
+Iso fontti ja vihreä väri korostavat hintaa.
+*/
+.price{
+font-size:40px;
+color:#4CAF50;
+}
+
+
+/*
+.review-grid toimii asiakasarviokorttien containerina.
+Kortit asetetaan vierekkäin ja rivittyvät tarvittaessa.
+*/
+.review-grid{
+display:flex;
+gap:30px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+
+/*
+.review on yksittäinen asiakasarviokortti.
+Valkea tausta ja varjo tekevät siitä erillisen elementin.
+*/
+.review{
+background:white;
+padding:30px;
+width:250px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+
+/*
+.fade on luokka scroll-animaatioille.
+Elementti alkaa näkymättömänä ja hieman alempana.
+*/
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+}
+
+
+/*
+.fade.show aktivoituu JavaScriptillä kun elementti tulee näkyviin.
+Se tekee animaation jossa elementti liukuu paikalleen.
+*/
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+
+/*
+footer määrittää sivun alaosan ulkoasun.
+Tumma tausta erottaa sen muusta sivusta.
+*/
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:50px;
+}
+
+
+/* Kartta */
+.map{
+margin-top:40px;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* HENKILÖKUNTA GRID */
+
+.staff-grid{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+
+/* HENKILÖKUNTA KORTTI */
+
+.staff-card{
+
+background:white;
+width:260px;
+padding:30px;
+border-radius:12px;
+
+box-shadow:0 8px 30px rgba(0,0,0,0.08);
+
+text-align:center;
+
+transition:0.3s;
+}
+
+
+/* HOVER ANIMAATIO */
+
+.staff-card:hover{
+transform:translateY(-8px);
+}
+
+
+/* HENKILÖKUNTA KUVAT */
+
+.staff-card img{
+
+width:120px;
+height:120px;
+
+object-fit:cover;
+
+border-radius:50%;
+
+margin-bottom:15px;
+
+}
+
+/* Mobiili / pienet näytöt */
+@media (max-width: 768px) {
+
+.hero h1 {
+  font-size: 36px; /* pienempi hero-otsikko */
+}
+
+.navbar nav a {
+  margin-right: 10px; /* pienempi väli linkkien välillä */
+  font-size: 14px;
+}
+
+.service-card,
+.price-card,
+.staff-card,
+.review {
+  width: 90%; /* kortit vievät lähes koko leveyden mobiilissa */
+}
+
+.hero-btn,
+.cta {
+  padding: 12px 25px; /* pienempi nappi mobiilissa */
+  font-size: 16px;
+}
+
+section {
+  padding: 60px 5%; /* pienempi padding mobiilissa */
+}
+
+}
+
+/* Embed-ajanvaraus */
+.booking-embed {
+  padding: 90px 10%;
+  text-align: center;
+  background: #fdf7f7;
+}
+
+.booking-embed h2 {
+  margin-bottom: 40px;
+}
+
+.booking-embed iframe {
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  max-width: 900px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .booking-embed iframe {
+    height: 600px;
+  }
+}
+
+/* Yksittäinen henkilökortti detail-sivu */
+.staff-detail {
+  padding: 90px 10%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background: #fdf7f7;
+}
+
+.staff-card-single {
+  background:white;
+  padding:30px;
+  width:260px;  /* tärkeä */
+  border-radius:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.08);
+  text-align:center;
+  transition:0.3s;
+}
+
+.staff-card-single:hover {
+  transform: translateY(-8px);
+}
+
+.staff-card-single img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.staff-card-single h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.staff-card-single p {
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Nappi */
+.staff-card-single .hero-btn {
+  padding: 15px 35px;
+  font-size: 18px;
+  border: none;
+  border-radius: 40px;
+  background: #BD8684;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.staff-card-single .hero-btn:hover {
+  background: #a76c6b;
+}
