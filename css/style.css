@@ -546,4 +546,5 @@ section {
   height:90vh;
   border:none;
   border-radius:12px;
+  overflow: auto;
 }
